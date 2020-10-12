@@ -7,6 +7,17 @@
 </head>
 <body>
 <script>
+  const pressed = [];
+  const konamiCode = 'test';
+  window.addEventListener('keyup', (e) => {
+    console.log(e.key);
+    pressed.push(e.key);
+    pressed.splice(-konamiCode.length - 1, pressed.length - konamiCode.length);
+    if(pressed.join('').includes(konamiCode)){
+      console.log('SUCCESS!');
+    }
+    console.log(pressed);
+  })
 </script>
 </body>
 </html>
