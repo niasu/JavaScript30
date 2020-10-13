@@ -48,7 +48,18 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+function removeStuff(bandsRemoved){
+  return bandsRemoved.replace(/^(a |an |the )/i, '');
+}
 
+const goodBands = bands.sort((a, b) => removeStuff(a) > removeStuff(b) ? 1 : -1);
+
+document.querySelector('#bands').innerHTML =
+  goodBands
+    .map(band => `<li>${band}</li>`)
+    .join('');
+
+console.log(goodBands);
 </script>
 
 </body>
